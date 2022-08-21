@@ -37,7 +37,7 @@ const Home = () => {
     return (
         <div className="container">
             <div className="row">
-                <div className='left_section col-12 col-md-6'>
+                <div className='left_section col-12 col-md-6 border-end border-2 border-opacity-10 border-dark'>
                     <h1 className='text-danger text-center'>USERS LIST</h1>
 
                     <Table bordered hover>
@@ -45,7 +45,7 @@ const Home = () => {
                             {
                                 users.map((user, index) => {
                                     return (
-                                        <tr onClick={() => handleUserId(user?.id)} key={index}>
+                                        <tr className='table_row' onClick={() => handleUserId(user?.id)} key={index}>
                                             <td className='text-center td_serial'>
                                                 {index + 1}
                                             </td>

@@ -1,3 +1,34 @@
+/* Custom shadow */
+.shadow--raised {
+    box-shadow: 0.3rem 0.3rem 0.5rem rgb(195 193 198 / 90%), -0.2rem -0.2rem 0.4rem #fff;
+}
+
+.button-shadow {
+    box-shadow: 7px 7px 15px rgba(55, 84, 170, 0.15),
+        -7px -7px 20px rgba(255, 255, 255, 1),
+        inset 0px 0px 4px rgba(255, 255, 255, 0.2),
+        inset 7px 7px 15px rgba(55, 84, 170, 0),
+        inset -7px -7px 20px rgba(255, 255, 255, 0),
+        0px 0px 4px rgba(255, 255, 255, 0) !important;
+
+}
+
+.image-shadow {
+    box-shadow: inset 0.2rem 0.2rem 0.5rem rgb(195 193 198 / 90%), inset -0.2rem -0.2rem 0.5rem #fff, 0.3rem 0.3rem 0.5rem rgb(195 193 198 / 90%), -0.2rem -0.2rem 0.4rem #fff;
+}
+
+.table-shadow {
+    box-shadow: 0.3rem 0.3rem 0.5rem rgb(195 193 198 / 90%), -0.2rem -0.2rem 0.4rem #fff;
+}
+
+.text-shadow {
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: rgb(0 0 0 / 40%) 1px 2px 1px;
+}
+
+
 .table_avatar {
     width: 50px;
     height: 50px;
@@ -11,4 +42,17 @@
 .loader {
     width: 100%;
     height: 100%;
+}
+
+.bg {
+    background-color: #E0E5EC !important;
+}
+
+.user_details .card {
+    border: 0;
+    width: 362px;
+}
+
+.table_row {
+    background-color: #CFD4DA !important;
 }
