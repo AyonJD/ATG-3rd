@@ -1,28 +1,51 @@
 import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
+import toast from 'react-hot-toast';
 import avatar from '../../assets/avater.png'
+import UserDetails from './UserDetails';
 
 const Home = () => {
     const [users, setUsers] = useState([]);
+    const [singleUserData, setSingleUserData] = useState({});
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         fetch('https://602e7c2c4410730017c50b9d.mockapi.io/users')
             .then(response => response.json())
-            .then(data => setUsers(data))
+            .then(data => {
+                setUsers(data);
+            })
     }, []);
+
+    const handleUserId = (id) => {
+        if (!id) {
+            toast.error('Please select a user');
+            return;
+        } else {
+            setIsLoading(true);
+            fetch(`https://602e7c2c4410730017c50b9d.mockapi.io/users/${id}`)
+                .then(response => response.json())
+                .then(data => {
+                    setSingleUserData(data);
+                    setIsLoading(false);
+                })
+        }
+
+    }
+
 
     return (
         <div className="container">
             <div className="row">
                 <div className='left_section col-12 col-md-6'>
-                    <h1 className='text-danger'>USERS LIST</h1>
+                    <h1 className='text-danger text-center'>USERS LIST</h1>
 
                     <Table bordered hover>
                         <tbody>
                             {
                                 users.map((user, index) => {
                                     return (
-                                        <tr key={index}>
+                                        <tr onClick={() => handleUserId(user?.id)} key={index}>
                                             <td className='text-center td_serial'>
                                                 {index + 1}
                                             </td>
@@ -39,7 +62,7 @@ const Home = () => {
                 </div>
 
                 <div className='right_section col-12 col-md-6'>
-
+                    <UserDetails singleUserData={singleUserData} isLoading={isLoading} />
                 </div>
             </div>
         </div>
