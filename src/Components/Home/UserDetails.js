@@ -6,6 +6,7 @@ const userDetails = ({ singleUserData, isLoading, id }) => {
     return (
         <>
             <h1 className='hover-3_main_text detals_header font_family border_round fw-semibold mx-auto text-center mb-3 hover-3'>USER DETAILS</h1>
+            
             {
                 isLoading ? <Spinner /> :
                     (
