@@ -8,6 +8,7 @@ const Home = () => {
     const [users, setUsers] = useState([]);
     const [singleUserData, setSingleUserData] = useState({});
     const [isLoading, setIsLoading] = useState(false);
+    const [id, setId] = useState(null);
 
     useEffect(() => {
         fetch('https://602e7c2c4410730017c50b9d.mockapi.io/users')
@@ -18,6 +19,7 @@ const Home = () => {
     }, []);
 
     const handleUserId = (id) => {
+        setId(id);
         if (!id) {
             toast.error('Please select a user');
             return;
@@ -35,13 +37,13 @@ const Home = () => {
 
 
     return (
-        <div className="container">
+        <div className="container py-5">
             <div className="row">
-                <div className='left_section col-12 col-md-6 border-end border-2 border-opacity-10 border-dark'>
-                    <h1 className='text-danger text-center'>USERS LIST</h1>
+                <div className='left_section col-12 col-md-6 align-items-start'>
+                    <h1 className='hover-3_main_text text-center mb-3 font_family fw-semibold border_round hover-3'>USERS LIST</h1>
 
-                    <Table bordered hover>
-                        <tbody>
+                    <Table striped bordered hover>
+                        <tbody className='table-shadow'>
                             {
                                 users.map((user, index) => {
                                     return (
@@ -62,10 +64,10 @@ const Home = () => {
                 </div>
 
                 <div className='right_section col-12 col-md-6'>
-                    <UserDetails singleUserData={singleUserData} isLoading={isLoading} />
+                    <UserDetails singleUserData={singleUserData} isLoading={isLoading} id={id} />
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 };
 
